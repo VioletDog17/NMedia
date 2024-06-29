@@ -57,6 +57,9 @@ class MainActivity : AppCompatActivity() {
 
 fun toStringCount(y : Int): String {
     var ans : String
+    if (y<=999){
+        return y.toString()
+    }
     var x = y.toDouble()
     ans = x.toString()
     if ((x > 999) and (x <= 999_999)) {
