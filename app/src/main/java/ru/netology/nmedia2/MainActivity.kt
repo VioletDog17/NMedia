@@ -66,7 +66,7 @@ fun toStringCount(y : Int): String {
         ans = (Math.round((x / 1000) * 10.0) / 10.0).toString() + "K"
     }
     if (x > 999999){
-        ans = (Math.round((x / 10000) * 10.0) / 10.0).toString() + "M"
+        ans = (Math.round((x / 1000000) * 10.0) / 10.0).toString() + "M"
     }
     return ans
 }
