@@ -4,15 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/common_spacing"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@sample/posts.json/data/authorAvatar" />
+
     <TextView
+        android:id="@+id/author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintBottom_toTopOf="@+id/published"
+        app:layout_constraintEnd_toStartOf="@id/menu"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        tools:text="@sample/posts.json/data/author" />
+
+    <TextView
+        android:id="@+id/published"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="@sample/posts.json/data/published"
+        app:layout_constraintBottom_toBottomOf="@id/barrier"
+        app:layout_constraintEnd_toStartOf="@id/menu"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@+id/author"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,published,menu" />
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/author"
+        app:srcCompat="@drawable/ic_more_vert_24" />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:autoLink="web"
+        android:text="@sample/posts.json/data/content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier"
+        app:layout_constraintBottom_toTopOf="@id/barrierDown"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="text" />
+
+    <ImageView
+        android:id="@+id/shereImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewsImg"
+        app:layout_constraintEnd_toStartOf="@+id/shereCounter"
+        app:layout_constraintTop_toTopOf="@+id/ViewsImg"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_remove_red_eye_24"
+        app:layout_constraintBottom_toTopOf="@id/barrierRed"/>
+
+    <ImageView
+        android:id="@+id/ViewsImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/likeCounter"
+        app:layout_constraintStart_toEndOf="@+id/likeCounter"
+        app:layout_constraintTop_toTopOf="@+id/likeCounter"
+        app:srcCompat="@drawable/baseline_reply_24" />
+
+
+    <ImageView
+        android:id="@+id/likeImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@id/barrierDown"
+        app:srcCompat="@drawable/baseline_favorite_border_24"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="289dp" />
+
+    <TextView
+        android:id="@+id/likeCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/likeImg"
+        app:layout_constraintStart_toEndOf="@+id/likeImg"
+        app:layout_constraintTop_toTopOf="@+id/likeImg" />
+
+    <TextView
+        android:id="@+id/ViewsCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewsImg"
+        app:layout_constraintStart_toEndOf="@+id/ViewsImg"
+        app:layout_constraintTop_toTopOf="@+id/ViewsImg" />
+
+    <TextView
+        android:id="@+id/shereCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/shereImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shereImg" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="text"
+        android:outlineAmbientShadowColor="@color/purple_200"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
