@@ -30,16 +30,14 @@ class MainActivity : AppCompatActivity() {
                     if (post.likedByMe) (R.drawable.baseline_favorite_border_24) else R.drawable.baseline_favorite_24
                 )
 
-                binding.likeImg.setOnClickListener {
-                    viewModel.like()
-                    likeCounter.text =  toStringCount (post.likes)
-                }
-
-                binding.ViewsImg.setOnClickListener {
-                    viewModel.vievs()
-                    ViewsCounter.text = toStringCount (post.repost)
-                }
             }
+        }
+        binding.likeImg.setOnClickListener {
+            viewModel.like()
+        }
+
+        binding.ViewsImg.setOnClickListener {
+            viewModel.vievs()
         }
     }
     fun toStringCount(y : Int): String {
